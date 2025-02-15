@@ -1,0 +1,89 @@
+# Flutter/Dart 相关
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.iml
+
+# Android 相关
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/local.properties
+/android/.gradle
+/android/gradlew
+/android/gradlew.bat
+/android/gradle/
+/android/*.iml
+/android/.idea/
+/android/key.properties  # 密钥配置
+/android/app/upload-keystore.jks  # 发布密钥
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.*
+
+# iOS 相关
+/ios/Pods/
+/ios/*.mode1v3
+/ios/*.mode2v3
+/ios/*.moved-aside
+/ios/*.pbxuser
+/ios/*.perspectivev3
+/ios/Flutter/.last_build_id
+/ios/Flutter/ephemeral/
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/.last_build_id
+**/ios/*.mode1v3
+**/ios/*.mode2v3
+**/ios/*.moved-aside
+**/ios/*.pbxuser
+**/ios/*.perspectivev3
+**/ios/**/*sync/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral
+**/ios/Flutter/flutter_export_environment.sh
+
+# IDE 相关
+.idea/
+.vscode/
+*.swp
+*.swo
+*.log
+.DS_Store
+
+# 项目敏感信息
+/lib/config/api_keys.dart  # API密钥配置
+/lib/config/secrets.dart   # 其他密钥配置
+*.jks                     # 所有密钥文件
+*.keystore                # 所有密钥文件
+key.properties            # 密钥属性文件
+google-services.json      # Google服务配置
+firebase_options.dart     # Firebase配置
+lib/config/secrets.dart
+*.env
+
+# 临时文件
+.temp/
+.cache/
+*.bak
+*.tmp
+
+# 本地测试文件
+/test/local_*
+/assets/test_*
+local_settings.json
+
+# 头像缓存
+/assets/avatars/
+Thumbs.db
