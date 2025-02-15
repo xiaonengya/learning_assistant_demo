@@ -1,6 +1,8 @@
 # AI学习助手
 
-一个基于Flutter开发的AI对话助手应用，支持多种AI模型API，提供对话预设管理等功能。
+一个基于Flutter开发的智能对话应用，支持多模型API接入，提供丰富的预设管理功能。
+
+![License](https://img.shields.io/github/license/xiaonengya/learning_assistant_demo)
 
 ## 功能特点
 

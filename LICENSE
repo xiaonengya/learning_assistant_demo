@@ -1,7 +1,7 @@
 GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
- Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+ Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
@@ -26,7 +26,7 @@ them if you wish), that you receive source code or can get it if you
 want it, that you can change the software or use pieces of it in new
 free programs, and that you know you can do these things.
 
-[完整的 GPL v3 许可证标准文本...]
+[此处是GPL v3完整的标准许可证文本,太长已省略]
 
                      END OF TERMS AND CONDITIONS
 
@@ -39,7 +39,7 @@ free software which everyone can redistribute and change under these terms.
 -------------------------------------------------------------------------
 
 AI学习助手 - 基于Flutter的AI对话应用
-Copyright (C) 2024 小能
+Copyright (C) 2024 小能 <ckl1234512345@outlook.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -52,11 +52,12 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Additional Information:
-- Project Homepage: https://github.com/your-username/learning_assistant_demo
-- Author Contact: your-email@example.com
+- Project Homepage: https://github.com/xiaonengya/learning_assistant_demo
+- Author: 小能
+- Email: ckl1234512345@outlook.com
 
 Source Code Notice:
 This project contains free software: you can redistribute it and/or modify
