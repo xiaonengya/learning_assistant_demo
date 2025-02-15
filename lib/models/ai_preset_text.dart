@@ -21,11 +21,11 @@ class AIPresetText {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'content': content,
-    'isDefault': isDefault,
-  };
+        'id': id,
+        'name': name,
+        'content': content,
+        'isDefault': isDefault,
+      };
 
   AIPresetText copyWith({
     String? id,

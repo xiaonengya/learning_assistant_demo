@@ -12,11 +12,12 @@ class UnifiedPresetPage extends StatefulWidget {
   State<UnifiedPresetPage> createState() => _UnifiedPresetPageState();
 }
 
-class _UnifiedPresetPageState extends State<UnifiedPresetPage> with SingleTickerProviderStateMixin {
+class _UnifiedPresetPageState extends State<UnifiedPresetPage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final APIConfigService _configService = APIConfigService();
   final AIPresetTextService _presetService = AIPresetTextService();
-  
+
   List<APIConfig> _configs = [];
   List<AIPresetText> _presets = [];
   bool _isLoading = true;
@@ -142,7 +143,7 @@ class _UnifiedPresetPageState extends State<UnifiedPresetPage> with SingleTicker
                 _buildConfigList(),
                 _buildPresetList(),
               ],
-      ),
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showQuickSetupDialog,
         child: const Icon(Icons.flash_on),
@@ -172,7 +173,7 @@ class _UnifiedPresetPageState extends State<UnifiedPresetPage> with SingleTicker
             backgroundColor: Colors.transparent,
             collapsedBackgroundColor: Colors.transparent,
             leading: CircleAvatar(
-              backgroundColor: config.isDefault 
+              backgroundColor: config.isDefault
                   ? Colors.amber.withOpacity(0.2)
                   : Theme.of(context).colorScheme.surfaceVariant,
               child: Icon(
@@ -268,7 +269,7 @@ class _UnifiedPresetPageState extends State<UnifiedPresetPage> with SingleTicker
           child: ListTile(
             contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             leading: CircleAvatar(
-              backgroundColor: preset.isDefault 
+              backgroundColor: preset.isDefault
                   ? Colors.amber.withOpacity(0.2)
                   : Theme.of(context).colorScheme.surfaceVariant,
               child: Icon(
@@ -377,8 +378,8 @@ class _UnifiedPresetPageState extends State<UnifiedPresetPage> with SingleTicker
               Text(
                 initialConfig == null ? '添加配置' : '编辑配置',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 24),
               Expanded(
@@ -426,8 +427,8 @@ class _UnifiedPresetPageState extends State<UnifiedPresetPage> with SingleTicker
               Text(
                 initialPreset == null ? '添加预设' : '编辑预设',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 24),
               Expanded(
@@ -788,8 +789,10 @@ class _APIConfigDialogState extends State<_APIConfigDialog> {
   void initState() {
     super.initState();
     _nameController = TextEditingController(text: widget.config?.name ?? '');
-    _apiKeyController = TextEditingController(text: widget.config?.apiKey ?? '');
-    _endpointController = TextEditingController(text: widget.config?.apiEndpoint ?? '');
+    _apiKeyController =
+        TextEditingController(text: widget.config?.apiKey ?? '');
+    _endpointController =
+        TextEditingController(text: widget.config?.apiEndpoint ?? '');
     _modelController = TextEditingController(text: widget.config?.model ?? '');
   }
 
@@ -807,25 +810,29 @@ class _APIConfigDialogState extends State<_APIConfigDialog> {
                   TextFormField(
                     controller: _nameController,
                     decoration: _buildInputDecoration('名称'),
-                    validator: (value) => value?.isEmpty ?? true ? '请输入名称' : null,
+                    validator: (value) =>
+                        value?.isEmpty ?? true ? '请输入名称' : null,
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _apiKeyController,
                     decoration: _buildInputDecoration('API Key'),
-                    validator: (value) => value?.isEmpty ?? true ? '请输入API Key' : null,
+                    validator: (value) =>
+                        value?.isEmpty ?? true ? '请输入API Key' : null,
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _endpointController,
                     decoration: _buildInputDecoration('接口地址'),
-                    validator: (value) => value?.isEmpty ?? true ? '请输入接口地址' : null,
+                    validator: (value) =>
+                        value?.isEmpty ?? true ? '请输入接口地址' : null,
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _modelController,
                     decoration: _buildInputDecoration('模型'),
-                    validator: (value) => value?.isEmpty ?? true ? '请输入模型' : null,
+                    validator: (value) =>
+                        value?.isEmpty ?? true ? '请输入模型' : null,
                   ),
                 ],
               ),
@@ -907,7 +914,8 @@ class _PresetDialogState extends State<_PresetDialog> {
   void initState() {
     super.initState();
     _nameController = TextEditingController(text: widget.preset?.name ?? '');
-    _contentController = TextEditingController(text: widget.preset?.content ?? '');
+    _contentController =
+        TextEditingController(text: widget.preset?.content ?? '');
   }
 
   @override
@@ -930,7 +938,8 @@ class _PresetDialogState extends State<_PresetDialog> {
                   child: TextFormField(
                     controller: _contentController,
                     decoration: _buildInputDecoration('内容'),
-                    validator: (value) => value?.isEmpty ?? true ? '请输入内容' : null,
+                    validator: (value) =>
+                        value?.isEmpty ?? true ? '请输入内容' : null,
                     maxLines: null,
                     expands: true,
                   ),

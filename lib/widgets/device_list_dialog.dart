@@ -106,16 +106,19 @@ class WiFiNetworkListDialog extends StatelessWidget {
           )
         else
           ...networks.map((network) => SimpleDialogOption(
-            onPressed: () => _showPasswordDialog(context, network.ssid ?? ''),
-            child: ListTile(
-              title: Text(network.ssid ?? '未知网络'),
-              subtitle: Text('信号: ${network.level} dBm'),
-              leading: Icon(
-                Icons.wifi,
-                color: (network.level ?? -100) > -67 ? Colors.green : Colors.orange,
-              ),
-            ),
-          )),
+                onPressed: () =>
+                    _showPasswordDialog(context, network.ssid ?? ''),
+                child: ListTile(
+                  title: Text(network.ssid ?? '未知网络'),
+                  subtitle: Text('信号: ${network.level} dBm'),
+                  leading: Icon(
+                    Icons.wifi,
+                    color: (network.level ?? -100) > -67
+                        ? Colors.green
+                        : Colors.orange,
+                  ),
+                ),
+              )),
         SimpleDialogOption(
           onPressed: () => Navigator.pop(context),
           child: const Text('取消'),

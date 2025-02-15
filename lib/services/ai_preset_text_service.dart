@@ -3,7 +3,7 @@ import 'storage_service.dart';
 
 class AIPresetTextService {
   final StorageService _storage = StorageService();
-  
+
   Future<List<AIPresetText>> loadPresets() async {
     final data = await _storage.loadData(StorageService.presetKey);
     return data.map((json) => AIPresetText.fromJson(json)).toList();
@@ -12,7 +12,7 @@ class AIPresetTextService {
   Future<void> savePreset(AIPresetText preset) async {
     final presets = await loadPresets();
     final index = presets.indexWhere((p) => p.id == preset.id);
-    
+
     if (index >= 0) {
       presets[index] = preset;
     } else {
@@ -37,9 +37,9 @@ class AIPresetTextService {
   Future<AIPresetText?> getDefaultPreset() async {
     final presets = await loadPresets();
     return presets.cast<AIPresetText?>().firstWhere(
-      (p) => p?.isDefault ?? false,
-      orElse: () => null,
-    );
+          (p) => p?.isDefault ?? false,
+          orElse: () => null,
+        );
   }
 
   Future<void> setDefaultPreset(String id) async {

@@ -30,14 +30,14 @@ class APIConfig {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'apiKey': apiKey,
-    'apiEndpoint': apiEndpoint,
-    'model': model,
-    'isDefault': isDefault,
-    'temperature': temperature,
-  };
+        'id': id,
+        'name': name,
+        'apiKey': apiKey,
+        'apiEndpoint': apiEndpoint,
+        'model': model,
+        'isDefault': isDefault,
+        'temperature': temperature,
+      };
 
   APIConfig copyWith({
     String? id,

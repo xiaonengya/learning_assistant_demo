@@ -40,7 +40,8 @@ class _AboutPageState extends State<AboutPage> {
                         Theme.of(context).colorScheme.secondary,
                       ],
                     ),
-                    borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(12)),
                   ),
                   child: Row(
                     children: [
@@ -52,7 +53,9 @@ class _AboutPageState extends State<AboutPage> {
                         ),
                         child: FlutterLogo(
                           size: 48,
-                          style: _showEasterEgg ? FlutterLogoStyle.horizontal : FlutterLogoStyle.markOnly,
+                          style: _showEasterEgg
+                              ? FlutterLogoStyle.horizontal
+                              : FlutterLogoStyle.markOnly,
                           // 移除默认的灰色调
                           textColor: Theme.of(context).colorScheme.primary,
                         ),
@@ -71,7 +74,7 @@ class _AboutPageState extends State<AboutPage> {
                               ),
                             ),
                             Text(
-                              'Version 1.0.0',  // 保持版本号不变
+                              'Version 1.0.0', // 保持版本号不变
                               style: const TextStyle(color: Colors.white70),
                             ),
                           ],
@@ -84,7 +87,8 @@ class _AboutPageState extends State<AboutPage> {
                           builder: (context, double value, child) {
                             return Transform.rotate(
                               angle: value,
-                              child: const Icon(Icons.stars, color: Colors.amber, size: 32),
+                              child: const Icon(Icons.stars,
+                                  color: Colors.amber, size: 32),
                             );
                           },
                         ),
@@ -198,24 +202,26 @@ v1.0.0 (2025-02)
       // 这里需要替换为实际获取版本的逻辑
       final flutterVersion = await Process.run('flutter', ['--version']);
       final dartVersion = await Process.run('dart', ['--version']);
-      
+
       String flutterVer = '获取失败';
       String dartVer = '获取失败';
-      
+
       if (flutterVersion.exitCode == 0) {
-        final match = RegExp(r'Flutter\s+(\d+\.\d+\.\d+)').firstMatch(flutterVersion.stdout.toString());
+        final match = RegExp(r'Flutter\s+(\d+\.\d+\.\d+)')
+            .firstMatch(flutterVersion.stdout.toString());
         if (match != null) {
           flutterVer = match.group(1) ?? '获取失败';
         }
       }
-      
+
       if (dartVersion.exitCode == 0) {
-        final match = RegExp(r'Dart\s+SDK\s+version:\s+(\d+\.\d+\.\d+)').firstMatch(dartVersion.stdout.toString());
+        final match = RegExp(r'Dart\s+SDK\s+version:\s+(\d+\.\d+\.\d+)')
+            .firstMatch(dartVersion.stdout.toString());
         if (match != null) {
           dartVer = match.group(1) ?? '获取失败';
         }
       }
-  
+
       return {
         'flutter': flutterVer,
         'dart': dartVer,

@@ -11,7 +11,7 @@ class BluetoothService {
   Future<List<ScanResult>> startScan() async {
     try {
       await requestPermissions();
-      
+
       // 确保蓝牙已开启
       final adapterState = await FlutterBluePlus.adapterState.first;
       if (adapterState != BluetoothAdapterState.on) {
@@ -28,17 +28,15 @@ class BluetoothService {
         timeout: const Duration(seconds: 4),
         androidUsesFineLocation: true,
       );
-      
+
       // 等待扫描完成
       await Future.delayed(const Duration(seconds: 4));
-      
+
       // 获取扫描结果
       final results = FlutterBluePlus.lastScanResults
-          .where((result) => 
-              result.device.name.isNotEmpty && 
-              result.rssi > -90)
+          .where((result) => result.device.name.isNotEmpty && result.rssi > -90)
           .toList();
-      
+
       return results;
     } catch (e) {
       await FlutterBluePlus.stopScan();

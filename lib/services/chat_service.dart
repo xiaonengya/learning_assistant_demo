@@ -28,7 +28,7 @@ class ChatService {
     required APIConfig config,
   }) async {
     final url = Uri.parse('${config.apiEndpoint}/chat/completions');
-    
+
     try {
       final response = await http.post(
         url,

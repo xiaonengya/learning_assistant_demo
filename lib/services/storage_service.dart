@@ -29,7 +29,7 @@ class StorageService {
     final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
     final String savedPath = '${appDir.path}/$fileName';
     await File(path).copy(savedPath);
-    
+
     await _prefs!.setString(avatarPathKey, savedPath);
   }
 
@@ -41,17 +41,17 @@ class StorageService {
   Future<void> saveData(String key, List<Map<String, dynamic>> data) async {
     if (!isInitialized) await init();
     if (_prefs == null) throw Exception('Storage not initialized');
-    
+
     await _prefs!.setString(key, jsonEncode(data));
   }
 
   Future<List<Map<String, dynamic>>> loadData(String key) async {
     if (!isInitialized) await init();
     if (_prefs == null) throw Exception('Storage not initialized');
-    
+
     final String? jsonStr = _prefs!.getString(key);
     if (jsonStr == null) return [];
-    
+
     try {
       final List<dynamic> jsonList = jsonDecode(jsonStr);
       return jsonList.cast<Map<String, dynamic>>();

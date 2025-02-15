@@ -143,9 +143,9 @@ class _ThemeSettingsState extends State<ThemeSettings> {
                     width: 2,
                   ),
                 ),
-                child: isSelected 
-                  ? const Icon(Icons.check, color: Colors.white)
-                  : null,
+                child: isSelected
+                    ? const Icon(Icons.check, color: Colors.white)
+                    : null,
               ),
               const SizedBox(height: 8),
               Text(

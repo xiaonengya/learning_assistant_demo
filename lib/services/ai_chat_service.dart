@@ -77,5 +77,4 @@ class AIChatService {
       throw Exception('发送消息失败: $e');
     }
   }
-
 }

@@ -38,17 +38,18 @@ class _AvatarPageState extends State<AvatarPage> {
 
   Future<void> _getImage() async {
     try {
-      final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+      final XFile? pickedFile =
+          await _picker.pickImage(source: ImageSource.gallery);
       if (pickedFile != null) {
         final newAvatar = File(pickedFile.path);
-        
+
         // 先保存到本地
         await _avatarService.saveAvatar(pickedFile.path);
-        
+
         // 更新UI和全局状态
         setState(() => _image = newAvatar);
         _avatarStateService.updateAvatar(newAvatar);
-        
+
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('头像已更新')),
@@ -71,15 +72,17 @@ class _AvatarPageState extends State<AvatarPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircleAvatar(
-            radius: 120,  // 增加半径
+            radius: 120, // 增加半径
             backgroundImage: _image != null ? FileImage(_image!) : null,
-            child: _image == null ? const Icon(Icons.person, size: 100) : null,  // 增加图标大小
+            child: _image == null
+                ? const Icon(Icons.person, size: 100)
+                : null, // 增加图标大小
           ),
-          const SizedBox(height: 30),  // 增加间距
+          const SizedBox(height: 30), // 增加间距
           ElevatedButton.icon(
             onPressed: _getImage,
-            icon: const Icon(Icons.add_photo_alternate, size: 24),  // 增加按钮图标大小
-            label: const Text('选择头像', style: TextStyle(fontSize: 16)),  // 增加文字大小
+            icon: const Icon(Icons.add_photo_alternate, size: 24), // 增加按钮图标大小
+            label: const Text('选择头像', style: TextStyle(fontSize: 16)), // 增加文字大小
           ),
         ],
       ),

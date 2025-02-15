@@ -36,7 +36,7 @@ class _PresetManagePageState extends State<PresetManagePage> {
       context: context,
       builder: (context) => _PresetEditDialog(),
     );
-    
+
     if (result != null) {
       await _presetService.savePreset(result);
       await _loadPresets();
@@ -48,7 +48,7 @@ class _PresetManagePageState extends State<PresetManagePage> {
       context: context,
       builder: (context) => _PresetEditDialog(preset: preset),
     );
-    
+
     if (result != null) {
       await _presetService.savePreset(result);
       await _loadPresets();
@@ -115,7 +115,7 @@ class _PresetManagePageState extends State<PresetManagePage> {
                           ],
                         ),
                       );
-                      
+
                       if (confirm == true) {
                         await _presetService.deletePreset(preset.id);
                         await _loadPresets();
@@ -199,17 +199,18 @@ class _PresetEditDialogState extends State<_PresetEditDialog> {
         ),
         TextButton(
           onPressed: () {
-            if (_nameController.text.isEmpty || _contentController.text.isEmpty) {
+            if (_nameController.text.isEmpty ||
+                _contentController.text.isEmpty) {
               return;
             }
-            
+
             final preset = AIPresetText(
               id: widget.preset?.id ?? DateTime.now().toString(),
               name: _nameController.text,
               content: _contentController.text,
               isDefault: _isDefault,
             );
-            
+
             Navigator.pop(context, preset);
           },
           child: const Text('保存'),

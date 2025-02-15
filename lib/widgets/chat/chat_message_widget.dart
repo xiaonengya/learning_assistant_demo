@@ -16,9 +16,8 @@ class ChatMessageWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: message.isUser 
-            ? MainAxisAlignment.end 
-            : MainAxisAlignment.start,
+        mainAxisAlignment:
+            message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (!message.isUser) _buildAvatar(isUser: false),
@@ -33,7 +32,7 @@ class ChatMessageWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       child: CircleAvatar(
-        backgroundColor: isDark 
+        backgroundColor: isDark
             ? (isUser ? Colors.blue[800] : Colors.grey[800])
             : (isUser ? Colors.blue[100] : Colors.grey[200]),
         child: Icon(
@@ -57,9 +56,7 @@ class ChatMessageWidget extends StatelessWidget {
         color: bgColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isDark 
-              ? Colors.grey[800]! 
-              : Colors.grey[300]!,
+          color: isDark ? Colors.grey[800]! : Colors.grey[300]!,
           width: 1,
         ),
       ),
@@ -77,9 +74,7 @@ class ChatMessageWidget extends StatelessWidget {
           Text(
             _formatTime(message.timestamp),
             style: TextStyle(
-              color: isDark 
-                  ? Colors.white60 
-                  : Colors.black54,
+              color: isDark ? Colors.white60 : Colors.black54,
               fontSize: 12,
             ),
           ),

@@ -27,7 +27,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _timeString = _formatDateTime(DateTime.now());
-    _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
+    _timer =
+        Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
     _getCurrentConnections();
   }
 
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       // 获取当前WiFi名称
       final info = NetworkInfo();
       final wifiName = await info.getWifiName() ?? '未连接';
-      
+
       // 获取当前蓝牙设备
       String bluetoothName = '未连接';
       if (await FlutterBluePlus.isOn) {
@@ -64,9 +65,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   String _formatDateTime(DateTime dateTime) {
-    return '${dateTime.hour.toString().padLeft(2, '0')}:' 
-           '${dateTime.minute.toString().padLeft(2, '0')}:' 
-           '${dateTime.second.toString().padLeft(2, '0')}';
+    return '${dateTime.hour.toString().padLeft(2, '0')}:'
+        '${dateTime.minute.toString().padLeft(2, '0')}:'
+        '${dateTime.second.toString().padLeft(2, '0')}';
   }
 
   @override
@@ -93,12 +94,12 @@ class _HomePageState extends State<HomePage> {
                   type: AppSettingsType.bluetooth,
                 ),
                 icon: const Icon(Icons.bluetooth),
-                label: Text(_currentBluetooth == '未连接' 
+                label: Text(_currentBluetooth == '未连接'
                     ? '蓝牙'
-                    : '蓝牙: $_currentBluetooth'
-                ),
+                    : '蓝牙: $_currentBluetooth'),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
               ),
               const SizedBox(width: 20),
@@ -107,12 +108,11 @@ class _HomePageState extends State<HomePage> {
                   type: AppSettingsType.wifi,
                 ),
                 icon: const Icon(Icons.wifi),
-                label: Text(_currentWifi == '未连接' 
-                    ? 'WiFi'
-                    : 'WiFi: $_currentWifi'
-                ),
+                label: Text(
+                    _currentWifi == '未连接' ? 'WiFi' : 'WiFi: $_currentWifi'),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
               ),
             ],

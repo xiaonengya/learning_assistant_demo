@@ -17,7 +17,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   final _apiConfigService = APIConfigService();
-  
+
   APIConfig _currentConfig = APIConfig(
     id: DateTime.now().toString(),
     name: 'Default Config',
@@ -56,7 +56,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   Future<void> _loadConfig() async {
     try {
-      final config = await _apiConfigService.getDefaultConfig(); // 改用 getDefaultConfig
+      final config =
+          await _apiConfigService.getDefaultConfig(); // 改用 getDefaultConfig
       if (config != null && mounted) {
         setState(() => _currentConfig = config);
       }
@@ -64,7 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
       print('加载配置失败: $e');
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -77,37 +78,38 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('AI温度设置', 
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
-                ),
+                const Text('AI温度设置',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 const Text(
                   'AI温度值影响输出的随机性和创造性。较低的温度值会产生更确定和一致的回答，较高的温度值会产生更有创意和多样的回答。',
                   style: TextStyle(color: Colors.grey),
                 ),
                 const SizedBox(height: 16),
-                
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,
-                  children: temperaturePresets.map((preset) => 
-                    ActionChip(
-                      avatar: Icon(preset.icon),
-                      label: Text(preset.name),
-                      tooltip: preset.description,
-                      backgroundColor: _currentConfig.temperature == preset.temperature
-                          ? Theme.of(context).colorScheme.primaryContainer
-                          : null,
-                      onPressed: () async {
-                        final newConfig = _currentConfig.copyWith(
-                          temperature: preset.temperature,
-                        );
-                        await _apiConfigService.saveConfig(newConfig);
-                        setState(() => _currentConfig = newConfig);
-                      },
-                    ),
-                  ).toList(),
+                  children: temperaturePresets
+                      .map(
+                        (preset) => ActionChip(
+                          avatar: Icon(preset.icon),
+                          label: Text(preset.name),
+                          tooltip: preset.description,
+                          backgroundColor: _currentConfig.temperature ==
+                                  preset.temperature
+                              ? Theme.of(context).colorScheme.primaryContainer
+                              : null,
+                          onPressed: () async {
+                            final newConfig = _currentConfig.copyWith(
+                              temperature: preset.temperature,
+                            );
+                            await _apiConfigService.saveConfig(newConfig);
+                            setState(() => _currentConfig = newConfig);
+                          },
+                        ),
+                      )
+                      .toList(),
                 ),
-                
                 const SizedBox(height: 16),
                 Row(
                   children: [

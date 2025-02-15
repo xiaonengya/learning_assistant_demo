@@ -22,7 +22,7 @@ class _AIChatPageState extends State<AIChatPage> {
   APIConfig? _currentConfig;
   AIPresetText? _currentPreset;
   bool _isLoading = false;
-  List<AIPresetText> _presets = [];  // 添加预设列表
+  List<AIPresetText> _presets = []; // 添加预设列表
 
   @override
   void initState() {
@@ -97,7 +97,7 @@ class _AIChatPageState extends State<AIChatPage> {
 
   void _handleSubmitted(String text) async {
     if (text.isEmpty) return;
-    
+
     // 发送前检查配置
     if (_currentConfig == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -120,9 +120,8 @@ class _AIChatPageState extends State<AIChatPage> {
     }
 
     // 如果有预设，添加到消息开头
-    final message = _currentPreset != null 
-        ? '${_currentPreset!.content}\n\n$text'
-        : text;
+    final message =
+        _currentPreset != null ? '${_currentPreset!.content}\n\n$text' : text;
 
     final userMessage = ChatMessage(
       text: text,
@@ -133,7 +132,7 @@ class _AIChatPageState extends State<AIChatPage> {
       _isLoading = true;
       _messages.insert(0, userMessage);
     });
-    
+
     _messageController.clear();
 
     try {
@@ -141,14 +140,16 @@ class _AIChatPageState extends State<AIChatPage> {
         message: message,
         config: _currentConfig!,
       );
-      
+
       if (mounted) {
         setState(() {
           _isLoading = false;
-          _messages.insert(0, ChatMessage(
-            text: response,
-            isUser: false,
-          ));
+          _messages.insert(
+              0,
+              ChatMessage(
+                text: response,
+                isUser: false,
+              ));
         });
       }
     } catch (e) {
@@ -169,23 +170,24 @@ class _AIChatPageState extends State<AIChatPage> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,  // 顶部对齐
+            crossAxisAlignment: CrossAxisAlignment.start, // 顶部对齐
             children: [
               // 预设选择卡片
               Expanded(
                 child: Card(
                   elevation: 2,
                   child: ExpansionTile(
-                    tilePadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12), // 增加内边距
+                    tilePadding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12), // 增加内边距
                     title: Row(
                       children: [
                         Icon(
-                          _currentPreset?.isDefault ?? false 
-                              ? Icons.star 
+                          _currentPreset?.isDefault ?? false
+                              ? Icons.star
                               : Icons.chat_bubble_outline,
                           size: 28, // 增大图标
-                          color: _currentPreset?.isDefault ?? false 
-                              ? Colors.amber 
+                          color: _currentPreset?.isDefault ?? false
+                              ? Colors.amber
                               : Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(width: 16), // 增大间距
@@ -205,7 +207,9 @@ class _AIChatPageState extends State<AIChatPage> {
                                   _currentPreset!.content,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context).textTheme.bodyMedium, // 调整副标题样式
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium, // 调整副标题样式
                                 ),
                             ],
                           ),
@@ -216,28 +220,36 @@ class _AIChatPageState extends State<AIChatPage> {
                     collapsedIconColor: Theme.of(context).colorScheme.primary,
                     children: [
                       Container(
-                        padding: const EdgeInsets.symmetric(vertical: 12), // 增加垂直内边距
+                        padding:
+                            const EdgeInsets.symmetric(vertical: 12), // 增加垂直内边距
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .surfaceVariant
+                              .withOpacity(0.3),
                           border: Border(
-                            top: BorderSide(color: Theme.of(context).dividerColor),
-                            bottom: BorderSide(color: Theme.of(context).dividerColor),
+                            top: BorderSide(
+                                color: Theme.of(context).dividerColor),
+                            bottom: BorderSide(
+                                color: Theme.of(context).dividerColor),
                           ),
                         ),
                         child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 24), // 增加水平内边距
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 24), // 增加水平内边距
                           leading: Icon(
                             Icons.chat_bubble_outline,
                             size: 28, // 增大图标
-                            color: _currentPreset == null 
-                                ? Theme.of(context).colorScheme.primary 
+                            color: _currentPreset == null
+                                ? Theme.of(context).colorScheme.primary
                                 : null,
                           ),
                           title: const Text(
                             '通用预设',
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
                           ),
-                          trailing: _currentPreset == null 
+                          trailing: _currentPreset == null
                               ? Icon(
                                   Icons.check_circle,
                                   size: 28,
@@ -274,10 +286,14 @@ class _AIChatPageState extends State<AIChatPage> {
                           itemCount: _presets.length,
                           itemBuilder: (context, index) => ListTile(
                             leading: Icon(
-                              _presets[index].isDefault ? Icons.star : Icons.chat_bubble_outline,
+                              _presets[index].isDefault
+                                  ? Icons.star
+                                  : Icons.chat_bubble_outline,
                               color: _currentPreset?.id == _presets[index].id
                                   ? Theme.of(context).colorScheme.primary
-                                  : _presets[index].isDefault ? Colors.amber : null,
+                                  : _presets[index].isDefault
+                                      ? Colors.amber
+                                      : null,
                             ),
                             title: Text(_presets[index].name),
                             subtitle: Text(
@@ -286,14 +302,15 @@ class _AIChatPageState extends State<AIChatPage> {
                               overflow: TextOverflow.ellipsis,
                             ),
                             selected: _currentPreset?.id == _presets[index].id,
-                            trailing: _currentPreset?.id == _presets[index].id 
+                            trailing: _currentPreset?.id == _presets[index].id
                                 ? Icon(
                                     Icons.check_circle,
                                     size: 28,
                                     color: Colors.green.shade400,
                                   )
                                 : null,
-                            onTap: () => setState(() => _currentPreset = _presets[index]),
+                            onTap: () => setState(
+                                () => _currentPreset = _presets[index]),
                           ),
                         ),
                       ],
@@ -302,10 +319,10 @@ class _AIChatPageState extends State<AIChatPage> {
                 ),
               ),
               // 右侧操作区
-              const SizedBox(width: 8),  // 间距
+              const SizedBox(width: 8), // 间距
               Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,  // 改为左对齐
+                crossAxisAlignment: CrossAxisAlignment.start, // 改为左对齐
                 children: [
                   // 新建对话按钮
                   FilledButton.icon(
@@ -314,14 +331,15 @@ class _AIChatPageState extends State<AIChatPage> {
                     label: const Text('新建对话'),
                     style: FilledButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,  // 减少水平内边距
+                        horizontal: 12, // 减少水平内边距
                         vertical: 12,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),  // 按钮与文本之间的间距
+                  const SizedBox(height: 8), // 按钮与文本之间的间距
                   // 消息数量显示
-                  Row(  // 使用Row来布局文字和数字
+                  Row(
+                    // 使用Row来布局文字和数字
                     children: [
                       const Text(
                         '当前消息:',
@@ -329,11 +347,11 @@ class _AIChatPageState extends State<AIChatPage> {
                           fontSize: 12,
                         ),
                       ),
-                      const SizedBox(width: 4),  // 文字和数字之间的间距
+                      const SizedBox(width: 4), // 文字和数字之间的间距
                       Text(
                         _messages.length.toString(),
                         style: TextStyle(
-                          fontSize: 15,  // 增大数字字号
+                          fontSize: 15, // 增大数字字号
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -354,8 +372,7 @@ class _AIChatPageState extends State<AIChatPage> {
             itemBuilder: (context, index) => _messages[index],
           ),
         ),
-        if (_isLoading)
-          const LinearProgressIndicator(),
+        if (_isLoading) const LinearProgressIndicator(),
         Container(
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
@@ -378,7 +395,10 @@ class _AIChatPageState extends State<AIChatPage> {
                       color: Theme.of(context).hintColor.withOpacity(0.6),
                     ),
                     filled: true,
-                    fillColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+                    fillColor: Theme.of(context)
+                        .colorScheme
+                        .surfaceVariant
+                        .withOpacity(0.3),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
@@ -485,7 +505,8 @@ class ChatMessage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Row(
-        mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment:
+            isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (!isUser) ...[
@@ -499,7 +520,7 @@ class ChatMessage extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: isUser 
+                color: isUser
                     ? Theme.of(context).colorScheme.primaryContainer
                     : Theme.of(context).colorScheme.secondaryContainer,
                 borderRadius: BorderRadius.circular(12),

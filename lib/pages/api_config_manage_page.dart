@@ -308,9 +308,9 @@ class _APIConfigDialogState extends State<_APIConfigDialog> {
                       child: Text('── Kimi AI ──'),
                     ),
                     ...entry.value.map((model) => DropdownMenuItem<String>(
-                      value: model,
-                      child: Text(model),
-                    )),
+                          value: model,
+                          child: Text(model),
+                        )),
                   ];
                 }).toList(),
                 onChanged: (value) {

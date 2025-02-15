@@ -3,7 +3,7 @@ import 'storage_service.dart';
 
 class APIConfigService {
   final StorageService _storage = StorageService();
-  
+
   Future<List<APIConfig>> loadConfigs() async {
     final data = await _storage.loadData(StorageService.configKey);
     return data.map((json) => APIConfig.fromJson(json)).toList();
@@ -12,7 +12,7 @@ class APIConfigService {
   Future<void> saveConfig(APIConfig config) async {
     final configs = await loadConfigs();
     final index = configs.indexWhere((c) => c.id == config.id);
-    
+
     if (index >= 0) {
       configs[index] = config;
     } else {
@@ -37,9 +37,9 @@ class APIConfigService {
   Future<APIConfig?> getDefaultConfig() async {
     final configs = await loadConfigs();
     return configs.cast<APIConfig?>().firstWhere(
-      (c) => c?.isDefault ?? false,
-      orElse: () => null,
-    );
+          (c) => c?.isDefault ?? false,
+          orElse: () => null,
+        );
   }
 
   Future<void> setDefaultConfig(String id) async {

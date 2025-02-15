@@ -18,24 +18,24 @@ class AIRole {
   }) : createdAt = createdAt ?? DateTime.now();
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'description': description,
-    'systemPrompt': systemPrompt,
-    'category': category,
-    'isDefault': isDefault,
-    'createdAt': createdAt.toIso8601String(),
-  };
+        'id': id,
+        'name': name,
+        'description': description,
+        'systemPrompt': systemPrompt,
+        'category': category,
+        'isDefault': isDefault,
+        'createdAt': createdAt.toIso8601String(),
+      };
 
   factory AIRole.fromJson(Map<String, dynamic> json) => AIRole(
-    id: json['id'],
-    name: json['name'],
-    description: json['description'],
-    systemPrompt: json['systemPrompt'],
-    category: json['category'],
-    isDefault: json['isDefault'] ?? false,
-    createdAt: DateTime.parse(json['createdAt']),
-  );
+        id: json['id'],
+        name: json['name'],
+        description: json['description'],
+        systemPrompt: json['systemPrompt'],
+        category: json['category'],
+        isDefault: json['isDefault'] ?? false,
+        createdAt: DateTime.parse(json['createdAt']),
+      );
 }
 
 // 预定义的角色预设

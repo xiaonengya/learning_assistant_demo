@@ -38,7 +38,7 @@ class AIRoleService {
   Future<void> saveRole(AIRole role) async {
     final roles = await loadRoles();
     final index = roles.indexWhere((r) => r.id == role.id);
-    
+
     if (index >= 0) {
       roles[index] = role;
     } else {

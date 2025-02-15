@@ -22,11 +22,13 @@ class WiFiService {
       if (!await isWifiEnabled()) {
         throw Exception('WiFi未启用');
       }
-      
+
       // 等待WiFi初始化
       await Future.delayed(const Duration(seconds: 1));
       final networks = await WiFiForIoTPlugin.loadWifiList();
-      return networks.where((network) => network.ssid?.isNotEmpty ?? false).toList();
+      return networks
+          .where((network) => network.ssid?.isNotEmpty ?? false)
+          .toList();
     } catch (e) {
       throw Exception('扫描WiFi失败: $e');
     }

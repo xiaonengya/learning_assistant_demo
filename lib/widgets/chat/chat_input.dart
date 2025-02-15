@@ -38,13 +38,13 @@ class _ChatInputState extends State<ChatInput> {
 
   void _saveCurrentText() {
     if (widget.controller.text.isEmpty) return;
-    
+
     showDialog(
       context: context,
       builder: (context) {
         String name = '';
         bool isDefault = false;
-        
+
         return AlertDialog(
           title: const Text('保存预设文本'),
           content: Column(
@@ -61,7 +61,8 @@ class _ChatInputState extends State<ChatInput> {
               CheckboxListTile(
                 title: const Text('设为默认'),
                 value: isDefault,
-                onChanged: (value) => setState(() => isDefault = value ?? false),
+                onChanged: (value) =>
+                    setState(() => isDefault = value ?? false),
               ),
             ],
           ),
@@ -125,11 +126,13 @@ class _ChatInputState extends State<ChatInput> {
                               Expanded(
                                 child: Text(
                                   preset.name,
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                               if (preset.isDefault)
-                                const Icon(Icons.star, size: 16, color: Colors.amber),
+                                const Icon(Icons.star,
+                                    size: 16, color: Colors.amber),
                             ],
                           ),
                           const SizedBox(height: 4),
@@ -190,8 +193,8 @@ class _ChatInputState extends State<ChatInput> {
                   widget.isLoading ? Icons.hourglass_empty : Icons.send,
                   color: Theme.of(context).primaryColor,
                 ),
-                onPressed: widget.isLoading 
-                    ? null 
+                onPressed: widget.isLoading
+                    ? null
                     : () => widget.onSubmit(widget.controller.text),
               ),
             ],
