@@ -16,21 +16,24 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.27.4'  # 更新到最新版本
+        flutter-version: '3.27.4'
         channel: 'stable'
         cache: true
         
     - name: Set up Dart
       uses: dart-lang/setup-dart@v1
       with:
-        sdk: '3.6.2'  # 更新到匹配的Dart版本
+        sdk: '3.6.2'
     
     - name: Install dependencies
       run: flutter pub get
     
-    - name: Verify formatting
-      run: dart format --output=none --set-exit-if-changed .
-    
+    # 修改格式化检查步骤
+    - name: Format and check
+      run: |
+        dart format .
+        git diff --exit-code
+
     - name: Analyze project source
       run: flutter analyze
     
