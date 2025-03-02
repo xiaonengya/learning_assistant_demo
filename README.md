@@ -1,40 +1,51 @@
-# AI学习助手
+# 学习助手
 
-一个基于Flutter开发的智能对话应用，支持多模型API接入，提供丰富的预设管理功能。
+学习助手是一款基于Flutter开发的对话应用，支持多种大语言模型API的接入，包括OpenAI、Anthropic Claude和国内的Kimi等，旨在为学习和工作提供便捷的AI对话能力。
 
-![License](https://img.shields.io/github/license/xiaonengya/learning_assistant_demo)
+## 功能特性
 
-## 功能特点
+- **多API支持**: 支持接入OpenAI (GPT-3.5/GPT-4)、Claude、Kimi等多种API服务
+- **角色预设**: 内置多种角色预设，可自定义角色和系统提示词
+- **预设文本**: 支持保存常用问题和提示语，减少重复输入
+- **深色模式**: 支持浅色/深色主题切换，保护眼睛
+- **主题自定义**: 可自由选择主题色，打造个性化体验
+- **头像设置**: 允许设置个人头像，增强个性化
+- **数据本地存储**: 所有数据都保存在本地，确保隐私安全
 
-- 💡 多模型API支持
-  - OpenAI GPT
-  - Anthropic Claude
-  - Moonshot/Kimi
-  
-- 📝 对话预设管理
-  - 快速切换预设
-  - 自定义预设内容
-  - 预设收藏功能
+## 项目架构
 
-- ⚙️ 个性化设置
-  - 暗色/亮色主题
-  - 主题色定制
-  - API参数调整
+本项目采用**领域驱动设计(DDD)**和**干净架构**原则构建，主要分为以下几层:
 
-- 🔄 其他功能
-  - 本地数据存储
-  - 多平台适配
-  - Material Design 3
+- **表示层(Presentation)**: UI界面和Bloc状态管理
+- **领域层(Domain)**: 业务模型、仓库接口和用例
+- **数据层(Data)**: 数据源和仓库实现
+- **核心层(Core)**: 工具类、常量和服务定位器
+
+### 技术栈
+
+- **Flutter**: UI框架
+- **Bloc**: 状态管理
+- **Get_It**: 依赖注入
+- **SharedPreferences**: 本地数据存储
+- **HTTP**: 网络请求
 
 ## 开始使用
 
-1. 克隆项目
+### 前提条件
+
+- Flutter 3.0.0 或更高版本
+- Dart 3.0.0 或更高版本
+
+### 安装步骤
+
+1. 克隆此仓库
 ```bash
-git clone https://github.com/your-username/learning_assistant_demo.git
+git clone https://github.com/xiaonengya/learning_assistant_demo.git
 ```
 
 2. 安装依赖
 ```bash
+cd learning_assistant_demo
 flutter pub get
 ```
 
@@ -43,44 +54,51 @@ flutter pub get
 flutter run
 ```
 
-## 系统要求
+### 首次使用
 
-- Flutter >= 3.6.0
-- Dart >= 3.0.0
-- Android SDK >= 21
-- iOS >= 11.0
+1. 打开应用后，先前往"设置"页面
+2. 点击"API配置"，添加一个新的API配置（需要您自己的API密钥）
+3. 返回主界面开始对话
 
-## 贡献指南
+## 项目结构
 
-欢迎提交Issue和Pull Request。在提交PR之前，请确保：
-
-1. 代码符合项目规范
-2. 添加必要的测试
-3. 更新相关文档
+```
+lib/
+├── core/                  # 核心工具和常量
+│   ├── constants/         # 应用常量
+│   ├── di/                # 依赖注入
+│   └── utils/             # 工具类
+├── data/                  # 数据层
+│   ├── datasources/       # 数据源
+│   │   ├── local/         # 本地数据源
+│   │   └── remote/        # 远程数据源
+│   └── repositories/      # 仓库实现
+├── domain/                # 领域层
+│   ├── models/            # 业务模型
+│   ├── repositories/      # 仓库接口
+│   └── usecases/          # 用例
+└── presentation/          # 表示层
+    ├── blocs/             # BLoC状态管理
+    ├── pages/             # 页面
+    └── widgets/           # 可复用组件
+```
 
 ## 许可证
 
-本项目采用 [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) 许可证。
+本项目基于GPL-3.0许可证开源 - 详见 [LICENSE](LICENSE) 文件
 
-重要说明：
-- ✔️ 允许商业使用
-- ✔️ 允许修改和分发
-- ❗ 修改后的代码必须开源
-- ❗ 修改后的代码必须继续使用GPL v3许可证
-- ❗ 不允许更改许可证
-- ❗ 必须声明原始作者的版权
-- ❗ 必须提供源代码
+## 联系方式
 
-这意味着：如果您使用、修改或分发本项目，您必须：
-1. 开放您修改后的完整源代码
-2. 保持使用GPL v3许可证
-3. 保留版权和许可声明
-4. 注明修改的内容和日期
+如有问题或建议，可以通过以下方式联系：
 
-详细条款请查看 [LICENSE](LICENSE) 文件。
+- GitHub Issue
+- 邮箱：ckl1234512345@outlook.com
 
-## 版权
+## 贡献指南
 
-Copyright (C) 2025 小能。保留所有权利。
+欢迎提交问题报告、功能需求或代码贡献。请先创建Issue讨论您的想法，再提交Pull Request。
 
-本程序是自由软件：你可以根据自由软件基金会发布的 GNU 通用公共许可证的条款，即许可证的第3版或（您选择的）任何后来的版本重新发布它和/或修改它。
+## 致谢
+
+- 感谢所有开源项目的贡献者
+- 特别感谢Flutter社区提供的宝贵资源
