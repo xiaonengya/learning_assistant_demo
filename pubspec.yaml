@@ -32,7 +32,7 @@ dependencies:
   connectivity_plus: ^4.0.2  # 添加此依赖以检测网络状态
   
   # 工具
-  intl: ^0.18.1
+  intl: ">=0.18.1 <0.21.0"
   uuid: ^4.0.0
 
 dev_dependencies:
